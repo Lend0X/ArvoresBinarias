@@ -5,6 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int op = -1;
         ArvoreBinaria arvore = new ArvoreBinaria();
+        boolean preferirEsquerda = false; // false = menor da direita (padrão), true = maior da esquerda
 
         do {
             System.out.print("\n--- ÁRVORE BINÁRIA ---\n" +
@@ -19,7 +20,8 @@ public class Main {
             "8. Imprimir em ordem\n" +
             "9. Imprimir em pré-ordem\n" +
             "10. Imprimir em pós-ordem\n" +
-            "11. Imprimir visualmente\n" + // nova opção
+            "11. Imprimir visualmente\n" +
+            "12. Definir preferência de remoção (maior da esquerda/menor da direita)\n" +
             "0. Sair\n" +
             "Sua opção: ");
             op = sc.nextInt();
@@ -34,11 +36,11 @@ public class Main {
                 case 2:
                     System.out.print("Digite o valor a ser removido: ");
                     int valorRemover = sc.nextInt();
-                    arvore.remover(valorRemover);
+                    arvore.remover(valorRemover, preferirEsquerda);
                     System.out.println("Valor " + valorRemover + " removido.");
                     break;
                 case 3:
-                    arvore.removerRaiz();
+                    arvore.removerRaiz(preferirEsquerda);
                     System.out.println("Raiz removida.");
                     break;
                 case 4:
@@ -50,7 +52,7 @@ public class Main {
                     System.out.println("Nós com um filho removidos.");
                     break;
                 case 6:
-                    arvore.removerNosDoisFilhos();
+                    arvore.removerNosDoisFilhos(preferirEsquerda);
                     System.out.println("Nós com dois filhos removidos.");
                     break;
                 case 7:
@@ -77,6 +79,12 @@ public class Main {
                 case 11:
                     arvore.imprimirVisual();
                     System.out.println("Árvore impressa visualmente.");
+                    break;
+                case 12:
+                    System.out.print("Usar maior da esquerda ao remover nós com dois filhos? (s/n): ");
+                    String pref = sc.next();
+                    preferirEsquerda = pref.equalsIgnoreCase("s");
+                    System.out.println("Preferência atual: " + (preferirEsquerda ? "maior da esquerda" : "menor da direita"));
                     break;
                 case 0:
                     System.out.println("Saindo...");
