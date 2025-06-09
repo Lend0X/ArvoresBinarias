@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int op = -1;
+        ArvoreBinaria arvore = new ArvoreBinaria();
 
         do {
             System.out.print("\n--- ÁRVORE BINÁRIA ---\n" +
@@ -18,6 +19,7 @@ public class Main {
             "8. Imprimir em ordem\n" +
             "9. Imprimir em pré-ordem\n" +
             "10. Imprimir em pós-ordem\n" +
+            "11. Imprimir visualmente\n" + // nova opção
             "0. Sair\n" +
             "Sua opção: ");
             op = sc.nextInt();
@@ -26,48 +28,55 @@ public class Main {
                 case 1:
                     System.out.print("Digite o valor a ser inserido: ");
                     int valorInserir = sc.nextInt();
-                    // Chamada para inserir o valor na árvore
+                    arvore.inserir(valorInserir);
                     System.out.println("Valor " + valorInserir + " inserido.");
                     break;
                 case 2:
                     System.out.print("Digite o valor a ser removido: ");
                     int valorRemover = sc.nextInt();
-                    // Chamada para remover o valor da árvore
+                    arvore.remover(valorRemover);
                     System.out.println("Valor " + valorRemover + " removido.");
                     break;
                 case 3:
-                    // Chamada para remover a raiz da árvore
+                    arvore.removerRaiz();
                     System.out.println("Raiz removida.");
                     break;
                 case 4:
-                    // Chamada para remover folhas da árvore
+                    arvore.removerFolhas();
                     System.out.println("Folhas removidas.");
                     break;
                 case 5:
-                    // Chamada para remover nós com um filho
+                    arvore.removerNosUmFilho();
                     System.out.println("Nós com um filho removidos.");
                     break;
                 case 6:
-                    // Chamada para remover nós com dois filhos
+                    arvore.removerNosDoisFilhos();
                     System.out.println("Nós com dois filhos removidos.");
                     break;
                 case 7:
                     System.out.print("Digite o valor a ser buscado: ");
                     int valorBuscar = sc.nextInt();
-                    // Chamada para buscar o valor na árvore
-                    System.out.println("Valor " + valorBuscar + " encontrado.");
+                    boolean encontrado = arvore.buscar(valorBuscar);
+                    if (encontrado)
+                        System.out.println("Valor " + valorBuscar + " encontrado.");
+                    else
+                        System.out.println("Valor " + valorBuscar + " não encontrado.");
                     break;
                 case 8:
-                    // Chamada para imprimir em ordem
+                    arvore.imprimirEmOrdem();
                     System.out.println("Árvore impressa em ordem.");
                     break;
                 case 9:
-                    // Chamada para imprimir em pré-ordem
+                    arvore.imprimirPreOrdem();
                     System.out.println("Árvore impressa em pré-ordem.");
                     break;
                 case 10:
-                    // Chamada para imprimir em pós-ordem
+                    arvore.imprimirPosOrdem();
                     System.out.println("Árvore impressa em pós-ordem.");
+                    break;
+                case 11:
+                    arvore.imprimirVisual();
+                    System.out.println("Árvore impressa visualmente.");
                     break;
                 case 0:
                     System.out.println("Saindo...");
