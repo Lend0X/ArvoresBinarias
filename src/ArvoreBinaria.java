@@ -1,5 +1,6 @@
 public class ArvoreBinaria {
-    private class No {
+    // Nó da árvore binária
+    private static class No {
         int valor;
         No esq, dir;
         No(int valor) { this.valor = valor; }
@@ -7,6 +8,7 @@ public class ArvoreBinaria {
 
     private No raiz;
 
+    // Inserção
     public void inserir(int valor) {
         raiz = inserirRec(raiz, valor);
     }
@@ -18,11 +20,11 @@ public class ArvoreBinaria {
         return no;
     }
 
+    // Remoção
     public void remover(int valor, boolean preferirEsquerda) {
         raiz = removerRec(raiz, valor, preferirEsquerda);
     }
 
-    // Mantém compatibilidade com chamadas antigas (padrão: menor da direita)
     public void remover(int valor) {
         remover(valor, false);
     }
@@ -118,6 +120,7 @@ public class ArvoreBinaria {
         return no;
     }
 
+    // Busca
     public boolean buscar(int valor) {
         return buscarRec(raiz, valor);
     }
@@ -129,6 +132,7 @@ public class ArvoreBinaria {
         return buscarRec(no.dir, valor);
     }
 
+    // Impressão em ordem
     public void imprimirEmOrdem() {
         imprimirEmOrdemRec(raiz);
         System.out.println();
@@ -142,11 +146,13 @@ public class ArvoreBinaria {
         }
     }
 
+    // Impressão pré-ordem
     public void imprimirPreOrdem() {
         imprimirPreOrdemRec(raiz);
         System.out.println();
     }
-   private void imprimirPreOrdemRec(No no) {
+
+    private void imprimirPreOrdemRec(No no) {
         if (no != null) {
             System.out.print(no.valor + " ");
             imprimirPreOrdemRec(no.esq);
@@ -154,6 +160,7 @@ public class ArvoreBinaria {
         }
     }
 
+    // Impressão pós-ordem
     public void imprimirPosOrdem() {
         imprimirPosOrdemRec(raiz);
         System.out.println();

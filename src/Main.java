@@ -25,6 +25,7 @@ public class Main {
             "0. Sair\n" +
             "Sua opção: ");
             op = sc.nextInt();
+            System.out.println();
 
             switch (op) {
                 case 1:
@@ -77,6 +78,7 @@ public class Main {
                     System.out.println("Árvore impressa em pós-ordem.");
                     break;
                 case 11:
+                    System.out.println();
                     arvore.imprimirVisual();
                     System.out.println("Árvore impressa visualmente.");
                     break;
